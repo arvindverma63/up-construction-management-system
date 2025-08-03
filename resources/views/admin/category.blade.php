@@ -47,6 +47,7 @@
                                     </button>
                                 </td>
                             </tr>
+
                             <tr data-id="#CAT-002">
                                 <td>#CAT-002</td>
                                 <td>Commercial Construction</td>
