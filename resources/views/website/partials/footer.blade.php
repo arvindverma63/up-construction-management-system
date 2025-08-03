@@ -107,10 +107,10 @@
                        <h3>Request Quote</h3>
                        <div class="">
                            <div class="form-group">
-                               <input type="text" class="form-control" placeholder="First Name">
+                               <input type="text" class="form-control" placeholder="FullName">
                            </div>
                            <div class="form-group">
-                               <input type="text" class="form-control" placeholder="Last Name">
+                               <input type="email" class="form-control" placeholder="email">
                            </div>
                            <div class="form-group">
                                <input type="text" class="form-control" placeholder="Phone">
