@@ -5,7 +5,7 @@
     <div class="sidebar d-flex flex-column" id="sidebar">
         <h3 class="text-white text-center mb-4">Construction Dashboard</h3>
         <a href="/admin/index"><i class="fas fa-home me-2"></i> Dashboard</a>
-        <a href="/admin/category" class="active"><i class="fas fa-tags me-2"></i> Categories</a>
+        <a href="/categories" class="active"><i class="fas fa-tags me-2"></i> Categories</a>
         <a href="#" class="mt-auto"><i class="fas fa-sign-out-alt me-2"></i> Logout</a>
     </div>
 

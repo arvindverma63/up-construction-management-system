@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminPageController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,5 +26,5 @@ Route::get('/blog', [PageController::class, 'blog'])->name('blog');
 
 
 Route::get('/admin/index',[AdminPageController::class,'index'])->name('admin.index');
-Route::get('/admin/category',[AdminPageController::class,'category'])->name('admin.category');
 Route::get('/admin/auth',[AdminPageController::class,'auth'])->name('auth');
+Route::resource('categories', CategoryController::class);
