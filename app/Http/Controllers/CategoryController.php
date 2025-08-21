@@ -4,90 +4,98 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Log;
 
 class CategoryController extends Controller
 {
-    /**
-     * Display a listing of the categories.
-     */
+    // Show all categories (with subcategories)
     public function index()
     {
-        $categories = Category::all();
-        return view('admin.category', compact('categories'));
+        $categories = Category::with('children')->whereNull('parent_id')->get();
+        Log::info('Categories listed', ['count' => $categories->count()]);
+
+        return view('admin.categories.index', compact('categories'));
     }
 
-    /**
-     * Show the form for creating a new category.
-     */
+    // Show create form
     public function create()
     {
-        return view('admin.category');
+        $categories = Category::whereNull('parent_id')->get(); // for dropdown
+        Log::info('Category create page opened');
+
+        return view('admin.categories.create', compact('categories'));
     }
 
-    /**
-     * Store a newly created category in storage.
-     */
+    // Store new category
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'category' => 'required|string|max:255',
-            'description' => 'required|string|max:255',
+        $request->validate([
+            'name' => 'required|string|max:255',
         ]);
 
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-
-        Category::create([
-            'category' => $request->category,
+        $category = Category::create([
+            'name' => $request->name,
+            'slug' => Str::slug($request->name),
+            'parent_id' => $request->parent_id,
             'description' => $request->description,
+            'status' => $request->status ?? 'active',
         ]);
 
-        return redirect()->back()->with('success', 'Category created successfully');
-    }
-
-    /**
-     * Show the form for editing the specified category.
-     */
-    public function edit($id)
-    {
-        $category = Category::findOrFail($id);
-        $categories = Category::all();
-        return view('admin.category', compact('category', 'categories'));
-    }
-
-    /**
-     * Update the specified category in storage.
-     */
-    public function update(Request $request, $id)
-    {
-        $validator = Validator::make($request->all(), [
-            'category' => 'required|string|max:255',
-            'description' => 'required|string|max:255',
+        Log::info('Category created', [
+            'id' => $category->id,
+            'name' => $category->name,
+            'parent_id' => $category->parent_id
         ]);
 
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
+        return redirect()->route('categories.index')->with('success', 'Category created successfully');
+    }
 
-        $category = Category::findOrFail($id);
+    // Show edit form
+    public function edit(Category $category)
+    {
+        $categories = Category::whereNull('parent_id')->where('id', '!=', $category->id)->get();
+        Log::info('Category edit page opened', ['id' => $category->id]);
+
+        return view('admin.categories.edit', compact('category', 'categories'));
+    }
+
+    // Update category
+    public function update(Request $request, Category $category)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+
         $category->update([
-            'category' => $request->category,
+            'name' => $request->name,
+            'slug' => Str::slug($request->name),
+            'parent_id' => $request->parent_id,
             'description' => $request->description,
+            'status' => $request->status ?? 'active',
         ]);
 
-        return redirect()->back()->with('success', 'Category updated successfully');
+        Log::info('Category updated', [
+            'id' => $category->id,
+            'name' => $category->name
+        ]);
+
+        return redirect()->route('categories.index')->with('success', 'Category updated successfully');
     }
 
-    /**
-     * Remove the specified category from storage.
-     */
-    public function destroy($id)
+    // Delete category
+    public function destroy(Category $category)
     {
-        $category = Category::findOrFail($id);
+        $id = $category->id;
+        $name = $category->name;
+
         $category->delete();
 
-        return redirect()->back()->with('success', 'Category deleted successfully');
+        Log::warning('Category deleted', [
+            'id' => $id,
+            'name' => $name
+        ]);
+
+        return redirect()->route('categories.index')->with('success', 'Category deleted successfully');
     }
 }
