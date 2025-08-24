@@ -46,36 +46,6 @@
                                 <i class="mdi mdi-pencil-outline mr-2"></i>Edit Project </a>
                         </div>
                     </li>
-                    <li class="nav-item nav-language dropdown d-none d-md-block">
-                        <a class="nav-link dropdown-toggle" id="languageDropdown" href="#" data-toggle="dropdown"
-                            aria-expanded="false">
-                            <div class="nav-language-icon">
-                                <i class="flag-icon flag-icon-us" title="us" id="us"></i>
-                            </div>
-                            <div class="nav-language-text">
-                                <p class="mb-1 text-black">English</p>
-                            </div>
-                        </a>
-                        <div class="dropdown-menu navbar-dropdown" aria-labelledby="languageDropdown">
-                            <a class="dropdown-item" href="#">
-                                <div class="nav-language-icon mr-2">
-                                    <i class="flag-icon flag-icon-ae" title="ae" id="ae"></i>
-                                </div>
-                                <div class="nav-language-text">
-                                    <p class="mb-1 text-black">Arabic</p>
-                                </div>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">
-                                <div class="nav-language-icon mr-2">
-                                    <i class="flag-icon flag-icon-gb" title="GB" id="gb"></i>
-                                </div>
-                                <div class="nav-language-text">
-                                    <p class="mb-1 text-black">English</p>
-                                </div>
-                            </a>
-                        </div>
-                    </li>
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown"
                             aria-expanded="false">
@@ -83,7 +53,7 @@
                                 <img src="assets/images/faces/face28.png" alt="image">
                             </div>
                             <div class="nav-profile-text">
-                                <p class="mb-1 text-black">Henry Klein</p>
+                                <p class="mb-1 text-black">Arvind Verma</p>
                             </div>
                         </a>
                         <div class="dropdown-menu navbar-dropdown dropdown-menu-right p-0 border-0 font-size-sm"
