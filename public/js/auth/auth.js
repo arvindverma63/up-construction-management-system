@@ -1,4 +1,5 @@
-// Register
+var token = document.querySelector('meta[name="csrf-token"]').getAttribute("content");
+
 document.getElementById("registerBtn").addEventListener("click", function () {
     var email = document.getElementById("registerEmail").value;
     var password = document.getElementById("registerPassword").value;
@@ -8,7 +9,7 @@ document.getElementById("registerBtn").addEventListener("click", function () {
     fetch("/auth/register", {
         method: "POST",
         headers: {
-            "X-CSRF-Token": token,
+            "X-CSRF-Token": token, // Laravel CSRF token
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
@@ -18,12 +19,9 @@ document.getElementById("registerBtn").addEventListener("click", function () {
             role: role,
         }),
     })
-        .then(async response => {
-            let data = await response.json();
-            if (!response.ok) {
-                errorAlert(data); // Show error popup
-                throw new Error(data.message || "Something went wrong");
-            }
+        .then(response => response.json())
+        .then(data => {
+            console.log("Register Response:", data);
             redirectCheck(data, email);
         })
         .catch(error => {
@@ -31,7 +29,7 @@ document.getElementById("registerBtn").addEventListener("click", function () {
         });
 });
 
-// Login
+// login
 document.getElementById("loginBtn").addEventListener("click", function (e) {
     e.preventDefault();
     var email = document.getElementById("loginEmail").value;
@@ -40,7 +38,7 @@ document.getElementById("loginBtn").addEventListener("click", function (e) {
     fetch("/auth/login", {
         method: "POST",
         headers: {
-            "X-CSRF-Token": token,
+            "X-CSRF-Token": token, // Laravel CSRF token
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
@@ -48,22 +46,20 @@ document.getElementById("loginBtn").addEventListener("click", function (e) {
             password: password,
         }),
     })
-        .then(async response => {
-            let data = await response.json();
-            if (!response.ok) {
-                errorAlert(data); // Show error popup
-                throw new Error(data.message || "Something went wrong");
-            }
+        .then(response => response.json())
+        .then(data => {
+            console.log("Login Response:", data);
             redirectCheck(data, email);
         })
         .catch(error => {
             console.error("Login Error:", error);
+            redirectCheck();
         });
 });
 
-// Redirect methods
+// redirect methods
 function redirectCheck(data, email) {
-    if (data.errors) {
+    if (data.errors || data.message) {
         errorAlert(data);
         return;
     }
@@ -73,29 +69,17 @@ function redirectCheck(data, email) {
             window.location.href = "/admin/index";
         } else if (data.user.role === "user" && data.user.email === email) {
             window.location.href = "/user/index";
-        } else if (data.user.role === "contractor" && data.user.email === email) {
+        } else if(data.user.role === "contractor" && data.user.email === email){
             window.location.href = "/user/index";
         }
     }
 }
 
-// SweetAlert error handler
 function errorAlert(error) {
-    let messages = [];
-
-    if (error.errors) {
-        // Laravel validation errors
-        for (let field in error.errors) {
-            messages.push(error.errors[field].join(" "));
-        }
-    } else {
-        messages.push(error.message || "An unexpected error occurred");
-    }
-
     Swal.fire({
         icon: "error",
         title: "Oops...",
-        html: messages.join("<br>"), // show nicely
+        text: JSON.stringify(error.errors), // convert to string if it's an object
         footer: '<a href="#">Why do I have this issue?</a>'
     });
 }
