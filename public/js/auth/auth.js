@@ -59,7 +59,7 @@ document.getElementById("loginBtn").addEventListener("click", function (e) {
 
 // redirect methods
 function redirectCheck(data, email) {
-    if (data.errors || data.message) {
+    if (data.errors) {
         errorAlert(data);
         return;
     }
