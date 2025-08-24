@@ -68,6 +68,8 @@ function redirectCheck(data, email) {
             window.location.href = "/admin/index";
         } else if (data.user.role === "user" && data.user.email === email) {
             window.location.href = "/user/index";
+        } else if(data.user.role === "contractor" && data.user.email === email){
+            window.location.href = "/user/index";
         }
     }
 }
