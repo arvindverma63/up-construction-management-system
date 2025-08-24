@@ -4,7 +4,7 @@
                 <div class="col-sm text-center text-md-left mb-md-0 mb-2 pr-md-4 d-flex topper align-items-center">
                     <p class="mb-0 w-100">
                         <span class="fa fa-paper-plane"></span>
-                        <span class="text">youremail@email.com</span>
+                        <span class="text">info@blocinfra.com</span>
                     </p>
                 </div>
                 <div class="col-sm justify-content-center d-flex mb-md-0 mb-2">
@@ -35,7 +35,7 @@
                 <div class="col-md-4 d-flex mb-2 mb-md-0">
                     <a class="navbar-brand d-flex align-items-center" href="index.html">
                         <span class="flaticon flaticon-crane"></span>
-                        <span class="ml-2">Wilcon <small>Construction Company</small></span>
+                        <span class="ml-2">Bloc Infra <small>Construction Company</small></span>
                     </a>
                 </div>
                 <div class="col-md-4 d-flex topper mb-md-0 mb-2 align-items-center">
@@ -43,7 +43,7 @@
                         <span class="fa fa-map"></span>
                     </div>
                     <div class="pr-md-4 pl-md-3 pl-3 text">
-                        <p class="con"><span>Free Call</span> <span>+1 234 456 78910</span></p>
+                        <p class="con"><span>Free Call</span> <span>+91 7311 122 392</span></p>
                         <p class="con">Call Us Now 24/7 Customer Support</p>
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                     </div>
                     <div class="text pl-3 pl-md-3">
                         <p class="hr"><span>Our Location</span></p>
-                        <p class="con">198 West 21th Street, Suite 721 New York NY 10016</p>
+                        <p class="con">Flat No. 202, Plot No. 647 Vishambhar Sadan, Vikash Nagar, Kanpur</p>
                     </div>
                 </div>
             </div>
