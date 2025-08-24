@@ -179,7 +179,7 @@
                                     @csrf
                                     <button type="submit" class="nav-link btn btn-link"
                                         style="color: inherit; text-decoration: none;">
-                                        <a class="dropdown-item" href="/auth/logout">Log out</a></button>
+                                        <a class="dropdown-item">Log out</a></button>
                                 </form>
                             </div>
                         </li>
