@@ -14,4 +14,5 @@
 	<link rel="stylesheet" href="{{ asset('template/css/jquery.timepicker.css') }}">
 	<link rel="stylesheet" href="{{ asset('template/css/flaticon.css') }}">
 	<link rel="stylesheet" href="{{ asset('template/css/style.css') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>

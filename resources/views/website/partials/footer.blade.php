@@ -92,7 +92,7 @@
        </div>
    </footer>
 
-@include('website.partials.auth')
+   @include('website.partials.auth')
 
    <!-- loader -->
    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
@@ -117,3 +117,5 @@
    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
    <script src="{{ asset('template/js/google-map.js') }}"></script>
    <script src="{{ asset('template/js/main.js') }}"></script>
+   <script src="{{ asset('js/auth/auth.js') }}?v={{ time() }}"></script>
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

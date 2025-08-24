@@ -44,7 +44,7 @@
               <div class="form-group mb-4">
                 <input type="password" class="form-control rounded-pill" id="loginPassword" placeholder="Password" required>
               </div>
-              <button type="submit" class="btn btn-primary btn-block rounded-pill py-2 mb-3 p-3">Login</button>
+              <button type="button" class="btn btn-primary btn-block rounded-pill py-2 mb-3 p-3" id="loginBtn">Login</button>
 
               <div class="text-center my-3">or</div>
 
@@ -75,7 +75,7 @@
                   <option value="contractor">Contractor</option>
                 </select>
               </div>
-              <button type="submit" class="btn btn-success btn-block rounded-pill py-2 p-3">Register</button>
+              <button type="button" id="registerBtn" class="btn btn-success btn-block rounded-pill py-2 p-3">Register</button>
             </form>
           </div>
 
